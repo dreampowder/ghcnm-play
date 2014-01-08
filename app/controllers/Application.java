@@ -17,7 +17,11 @@ public class Application extends Controller {
     	Logger.info("Getting geoloc Json");
     	List<TempSummary> tempSummaries = 
     			GeoTempData.find(""
-    					+ "select new models.TempSummary(inv.name,inv.latitude, inv.longitude,"
+    					+ "select new models.TempSummary("
+    					+ "inv.geoId,"
+    					+ "inv.name,"
+    					+ "inv.latitude, "
+    					+ "inv.longitude,"
     					+ "sum(dat.temp1)/count(*),"
     					+ "sum(dat.temp2)/count(*),"
     					+ "sum(dat.temp3)/count(*),"

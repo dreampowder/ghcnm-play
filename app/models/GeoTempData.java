@@ -35,7 +35,6 @@ public class GeoTempData extends Model {
 	
 	public GeoTempData(String dataLine){
 		String inventoryCode = dataLine.substring(0,11);
-		Logger.info("GeoId: %s", inventoryCode);
 		this.inventory = GeoInventory.find("byGeoId",Long.valueOf(inventoryCode)).first();
 		this.year = Long.valueOf(dataLine.substring(11,15));
 		this.temp1 = Double.valueOf(dataLine.substring(20, 24))/100;

@@ -6,6 +6,8 @@ import java.util.List;
 
 public class TempSummary {
 
+	public Long cityId;
+	
 	public String cityName;
 	
 	public Double longitude;
@@ -14,10 +16,11 @@ public class TempSummary {
 	
 	public  HashMap<String,Double> temperatures;
 
-	public TempSummary(String city, Double lon, Double lat, 
+	public TempSummary(Long cityId,String city, Double lon, Double lat, 
 			Double t1,Double t2,Double t3,Double t4,Double t5,Double t6,
 			Double t7,Double t8,Double t9,Double t10,Double t11,Double t12) {
 		super();
+		this.cityId = cityId;
 		this.cityName = city.trim();
 		this.longitude = lon;
 		this.latitude= lat;

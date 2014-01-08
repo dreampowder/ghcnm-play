@@ -26,8 +26,8 @@ public class GeoInventory extends Model{
 	public GeoInventory(String dataLine){
 		super();
 		this.geoId = Long.valueOf(dataLine.substring(0,11));
-		this.latitude = Double.valueOf(dataLine.substring(13, 20));
-		this.longitude = Double.valueOf(dataLine.substring(23, 30));
+		this.latitude = Double.valueOf(dataLine.substring(12, 20));
+		this.longitude = Double.valueOf(dataLine.substring(21, 31));
 		this.name = dataLine.substring(38, 67);
 	}
 	
