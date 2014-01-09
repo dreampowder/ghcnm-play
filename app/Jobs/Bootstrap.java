@@ -50,10 +50,27 @@ public class Bootstrap extends Job {
 		org.hibernate.Transaction tx = stateless.beginTransaction();
 
 		counter=0;
+		int skipCounter = 1;
 		while ((line = br2.readLine()) != null) {
 			counter++;
 			GeoTempData data = new GeoTempData(line);
-			stateless.insert(data);
+			if(data.temp1!=-99.99
+					&&data.temp2!=-99.99
+					&&data.temp3!=-99.99
+					&&data.temp4!=-99.99
+					&&data.temp5!=-99.99
+					&&data.temp6!=-99.99
+					&&data.temp7!=-99.99
+					&&data.temp8!=-99.99
+					&&data.temp9!=-99.99
+					&&data.temp10!=-99.99
+					&&data.temp11!=-99.99
+					&&data.temp12!=-99.99
+					)
+			{
+				stateless.insert(data);
+			}else
+				skipCounter++;
 			if(counter%1000==0){
 				tx.commit();
 				tx = stateless.beginTransaction();
@@ -68,7 +85,7 @@ public class Bootstrap extends Job {
 
 		GeoTempData.em().flush();
 		GeoTempData.em().clear();
-		Logger.info("Geoloc Data save complete!");
+		Logger.info("Geoloc Data save complete! skipCount=%s",skipCounter);
 	}
 
 	public void saveInventory() throws HibernateException, IOException{
